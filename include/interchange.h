@@ -1,0 +1,22 @@
+#ifndef INTERCHANGEH
+#define INTERCHANGEH
+
+#define ICTAG_STRING(x) (0+(x))
+#define ICTAG_BYTE_ARRAY(x) (16384+(x))
+#define ICTAG_UUID (-8)
+#define ICTAG_COMPOUND (-7)
+#define ICTAG_ARRAY (-6)
+#define ICTAG_INT (-5)
+#define ICTAG_DOUBLE (-4)
+#define ICTAG_BOOLEAN (-3)
+#define ICTAG_NULL (-2)
+#define ICTAG_END (-1)
+
+#define INVOKE_SUCCESS 0
+#define INVOKE_UNKNOWN_ERROR 1
+#define INVOKE_LIMIT_REACHED 2
+#define INVOKE_UNKNOWN_RECEIVER 3
+#define INVOKE_INDIRECT_REQUIRED 4
+#define INVOKE_UNKNOWN_METHOD 5
+
+#endif
