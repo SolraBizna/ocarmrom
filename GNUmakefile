@@ -1,16 +1,23 @@
-AS=armeb-oc_arm-eabi-as
-CC=armeb-oc_arm-eabi-gcc
-CXX=armeb-oc_arm-eabi-g++
-LD=armeb-oc_arm-eabi-gcc
-OBJCOPY=armeb-oc_arm-eabi-objcopy
-OBJDUMP=armeb-oc_arm-eabi-objdump
+OCCROSS_PREFIX=/opt/occross/armeb-oc_arm-eabi/bin
+AS=$(OCCROSS_PREFIX)/armeb-oc_arm-eabi-as
+CC=$(OCCROSS_PREFIX)/armeb-oc_arm-eabi-gcc
+CXX=$(OCCROSS_PREFIX)/armeb-oc_arm-eabi-g++
+LD=$(OCCROSS_PREFIX)/armeb-oc_arm-eabi-gcc
+OBJCOPY=$(OCCROSS_PREFIX)/armeb-oc_arm-eabi-objcopy
+OBJDUMP=$(OCCROSS_PREFIX)/armeb-oc_arm-eabi-objdump
 
 ASFLAGS=
 CFLAGS=-Os -g -Wall
 CXXFLAGS=$(CFLAGS)
 LDFLAGS=-z max-page-size=4 -nostartfiles
 
-all: bin/test.elf bin/boot0.rom bin/tetris.rom bin/redclock.rom
+all: bin obj bin/test.elf bin/boot0.rom bin/tetris.rom bin/redclock.rom
+
+bin:
+	mkdir -p bin
+
+obj:
+	mkdir -p obj
 
 bin/%.rom: bin/%.elf
 	@echo "Preloading to $@..."
