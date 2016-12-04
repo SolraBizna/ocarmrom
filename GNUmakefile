@@ -1,14 +1,14 @@
-AS=arm-none-eabi-as
-CC=clang
-CXX=clang++
-LD=arm-none-eabi-ld
-OBJCOPY=arm-none-eabi-objcopy
-OBJDUMP=arm-none-eabi-objdump
+AS=armeb-oc_arm-eabi-as
+CC=armeb-oc_arm-eabi-gcc
+CXX=armeb-oc_arm-eabi-g++
+LD=armeb-oc_arm-eabi-gcc
+OBJCOPY=armeb-oc_arm-eabi-objcopy
+OBJDUMP=armeb-oc_arm-eabi-objdump
 
-ASFLAGS=-march=armv7-a -mfloat-abi=soft -EB -mthumb-interwork -meabi=5
-CFLAGS=-Oz -g -nostdlibinc -isystem include/ -isystem ../newlib-jarm-build -isystem ../newlib-2.4.0/newlib/libc/include -ffreestanding -mhwdiv=arm,thumb -target armv7a-eabi -march=armv7a -mbig-endian -mfloat-abi=soft -msoft-float -Wall -Werror -mllvm -inline-threshold=-20
+ASFLAGS=
+CFLAGS=-Os -g -Wall
 CXXFLAGS=$(CFLAGS)
-LDFLAGS=--be8 -z max-page-size=4
+LDFLAGS=-z max-page-size=4 -nostartfiles
 
 all: bin/test.elf bin/boot0.rom bin/tetris.rom bin/redclock.rom
 
