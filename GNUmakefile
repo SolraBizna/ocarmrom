@@ -11,7 +11,7 @@ CFLAGS=-Os -g -Wall
 CXXFLAGS=$(CFLAGS)
 LDFLAGS=-z max-page-size=4 -nostartfiles
 
-all: bin obj bin/test.elf bin/boot0.rom bin/tetris.rom bin/redclock.rom
+all: bin obj bin/test.elf bin/boot0.rom bin/tetris.rom bin/redclock.rom bin/infinity.rom
 
 bin:
 	mkdir -p bin
@@ -38,6 +38,8 @@ bin/test.elf: src/test.ld obj/test.o obj/startup.o
 bin/boot1.elf: src/boot1.ld obj/boot1.o obj/boot1_startup.o obj/boot1_devsetup.o obj/boot1_ccutil.o obj/nvram.o obj/debug.o obj/boot1_autoboot_prompt.o obj/boot1_out_line.o obj/boot1_ramstack.o obj/u2a.o obj/boot1_key_was_pressed.o
 
 bin/boot0.elf: src/boot0.ld obj/boot0.o obj/boot0_ccutil.o
+
+bin/infinity.elf: src/infinity.ld obj/infinity.o
 
 bin/tetris.elf: src/tetris.ld obj/tetris.o obj/tetris_startup.o obj/tetrominoes.o obj/tetris_util.o obj/tetris_ccutil.o obj/tetris_ui.o obj/tetris_rand.o
 
